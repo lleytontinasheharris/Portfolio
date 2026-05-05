@@ -1,0 +1,780 @@
+/* ================================================================
+   LLEYTON TINASHE HARRIS — PORTFOLIO
+   style.css
+   
+   Structure of this file:
+   1. CSS Custom Properties (variables)
+   2. Reset & Base
+   3. Layout (Grid — sidebar + main)
+   4. Sidebar
+   5. Section structure (shared)
+   6. About section
+   7. Skills section
+   8. Projects section
+   9. Certifications section
+   10. Contact section
+   11. Footer
+   12. Responsive (mobile — below 768px)
+================================================================ */
+
+
+/* ================================================================
+   1. CSS CUSTOM PROPERTIES
+   All colours, spacing, and font sizes defined once here.
+   Change a value here and it updates everywhere.
+================================================================ */
+
+:root {
+
+  /* Colour palette — 3 colours only */
+  --color-bg:         #F5F0E8;   /* Aged paper — warm off-white        */
+  --color-ink:        #1A1A1A;   /* Ink black — all text               */
+  --color-accent:     #C1440E;   /* Oxide red — used sparingly         */
+
+  /* Derived shades — still within the palette, not new colours */
+  --color-ink-muted:  #5A5A5A;   /* For secondary text, labels         */
+  --color-border:     #D4CFC6;   /* Subtle border — warm, not grey     */
+
+  /* Typography */
+  --font-primary: 'Courier New', Courier, monospace;
+
+  /* Font sizes — desktop */
+  --size-xs:    0.75rem;    /*  12px — labels, metadata     */
+  --size-sm:    0.875rem;   /*  14px — secondary text       */
+  --size-base:  1rem;       /*  16px — body text            */
+  --size-md:    1.25rem;    /*  20px — project names        */
+  --size-lg:    1.75rem;    /*  28px — section titles       */
+  --size-xl:    2.5rem;     /*  40px — sidebar name         */
+  --size-xxl:   3.5rem;     /*  56px — sidebar name large   */
+
+  /* Spacing scale */
+  --space-xs:   0.5rem;     /*   8px */
+  --space-sm:   1rem;       /*  16px */
+  --space-md:   2rem;       /*  32px */
+  --space-lg:   4rem;       /*  64px */
+  --space-xl:   6rem;       /*  96px */
+
+  /* Layout */
+  --sidebar-width: 280px;
+}
+
+
+/* ================================================================
+   2. RESET & BASE
+   Minimal reset — removes browser defaults that would fight the
+   design. Sets the typographic and colour foundation.
+================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Smooth scrolling for the sidebar anchor links */
+  scroll-behavior: smooth;
+
+  /* Prevents layout shift on pages with/without scrollbar */
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--size-base);
+  line-height: 1.7;
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+
+  /* Prevents horizontal overflow on mobile */
+  overflow-x: hidden;
+}
+
+/* Remove default list styles — we control this per component */
+ul {
+  list-style: none;
+}
+
+/* Base link reset — we style links per component */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Images never overflow their container */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove default button styles if we ever add one */
+button {
+  font-family: var(--font-primary);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+
+/* ================================================================
+   3. LAYOUT
+   CSS Grid — two columns on desktop.
+   Sidebar is fixed width. Main takes all remaining space.
+================================================================ */
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+
+/* ================================================================
+   4. SIDEBAR
+   Fixed to the viewport. Always visible while main scrolls.
+   Contains identity, navigation, and external links.
+================================================================ */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+
+  /* Stacks identity, nav, and links vertically with space between */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: var(--space-lg) var(--space-md);
+
+  /* Right border separates sidebar from main — using warm border */
+  border-right: 1px solid var(--color-border);
+
+  /* Sidebar does not scroll with the page */
+  overflow: hidden;
+}
+
+/* ── Sidebar: Identity block ──────────────────────────────────── */
+
+.sidebar__label {
+  font-size: var(--size-xs);
+  letter-spacing: 0.2em;
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.sidebar__name {
+  /* The largest text on the page — your name dominates the sidebar */
+  font-size: var(--size-xl);
+  font-weight: bold;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+
+  /* Oxide red — your name is the one accent use in the sidebar */
+  color: var(--color-accent);
+
+  margin-bottom: var(--space-sm);
+}
+
+.sidebar__role {
+  font-size: var(--size-sm);
+  color: var(--color-ink);
+  line-height: 1.4;
+}
+
+.sidebar__institution {
+  font-size: var(--size-sm);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-xs);
+}
+
+/* ── Sidebar: Navigation ──────────────────────────────────────── */
+
+.sidebar__nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.sidebar__nav a {
+  font-size: var(--size-sm);
+  color: var(--color-ink-muted);
+  letter-spacing: 0.05em;
+  display: inline-block;
+  padding: 2px 0;
+
+  /* Underline grows from left on hover — CSS only, no JS */
+  position: relative;
+}
+
+.sidebar__nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+
+  /* Transition for the underline — this is the one motion we allow */
+  transition: width 0.2s ease;
+}
+
+.sidebar__nav a:hover {
+  color: var(--color-ink);
+}
+
+.sidebar__nav a:hover::after {
+  width: 100%;
+}
+
+/* ── Sidebar: External links ──────────────────────────────────── */
+
+.sidebar__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.sidebar__link {
+  font-size: var(--size-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 2px 0;
+
+  /* Same underline treatment as nav */
+  position: relative;
+}
+
+.sidebar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 0.2s ease;
+}
+
+.sidebar__link:hover {
+  color: var(--color-ink);
+}
+
+.sidebar__link:hover::after {
+  width: 100%;
+}
+
+/* Accent variant — for CV download link when added */
+.sidebar__link--accent {
+  color: var(--color-accent);
+}
+
+
+/* ================================================================
+   5. SECTION STRUCTURE (shared across all sections)
+   Consistent vertical rhythm and header treatment.
+================================================================ */
+
+.main {
+  /* Generous left padding — content doesn't crowd the sidebar border */
+  padding: var(--space-lg) var(--space-xl);
+  max-width: 860px;
+}
+
+.section {
+  /* Large vertical gap between sections — breathing room */
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-xl);
+}
+
+/* Last section doesn't need a bottom border */
+.section:last-of-type {
+  border-bottom: none;
+}
+
+/* ── Section header: number + title ──────────────────────────── */
+
+.section__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+
+  /* Thin top border above each section header — editorial rule */
+  padding-top: var(--space-md);
+  border-top: 2px solid var(--color-ink);
+}
+
+.section__number {
+  font-size: var(--size-xs);
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  font-weight: bold;
+
+  /* Aligns number with the baseline of the title */
+  position: relative;
+  top: -2px;
+}
+
+.section__title {
+  font-size: var(--size-lg);
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.section__body {
+  /* All content within a section shares this left offset — 
+     creates a clean column of content separate from the header */
+  padding-left: 0;
+}
+
+
+/* ================================================================
+   6. ABOUT SECTION
+================================================================ */
+
+#about .section__body p {
+  font-size: var(--size-base);
+  line-height: 1.8;
+  color: var(--color-ink);
+  max-width: 65ch;  /* ~65 characters per line — optimal readability */
+  margin-bottom: var(--space-sm);
+}
+
+#about .section__body p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ================================================================
+   7. SKILLS SECTION
+================================================================ */
+
+.skills__group {
+  /* Each group sits on its own row with clear separation */
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skills__group:last-child {
+  border-bottom: none;
+}
+
+.skills__category {
+  font-size: var(--size-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  font-weight: normal;
+
+  /* Aligns with the first item in the skill list */
+  padding-top: 2px;
+}
+
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.skills__list li {
+  font-size: var(--size-sm);
+  color: var(--color-ink);
+}
+
+/* Editorial separator between skill items */
+.skills__list li::after {
+  content: ' /';
+  color: var(--color-ink-muted);
+  margin-left: var(--space-xs);
+}
+
+.skills__list li:last-child::after {
+  content: '';
+}
+
+
+/* ================================================================
+   8. PROJECTS SECTION
+================================================================ */
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.project {
+  /* Clean border — no shadow, no glow, no radius */
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+
+  /* Flex column so links always sit at the bottom */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* ── Project: top meta row (index + status) ───────────────────── */
+
+.project__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.project__index {
+  font-size: var(--size-xs);
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.project__status {
+  font-size: var(--size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+
+  /* Subtle border around status — contained, minimal */
+  border: 1px solid var(--color-border);
+  padding: 2px var(--space-xs);
+}
+
+/* ── Project: name and type ───────────────────────────────────── */
+
+.project__name {
+  font-size: var(--size-md);
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.project__type {
+  font-size: var(--size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+/* ── Project: description ─────────────────────────────────────── */
+
+.project__description {
+  font-size: var(--size-sm);
+  line-height: 1.7;
+  color: var(--color-ink);
+  margin-top: var(--space-xs);
+
+  /* Push everything below this to the bottom */
+  flex-grow: 1;
+}
+
+/* ── Project: tech stack ──────────────────────────────────────── */
+
+.project__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+
+.project__stack li {
+  font-size: var(--size-xs);
+  letter-spacing: 0.08em;
+  color: var(--color-ink-muted);
+  border: 1px solid var(--color-border);
+  padding: 2px 6px;
+}
+
+/* ── Project: links ───────────────────────────────────────────── */
+
+.project__links {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+
+  /* Thin line separates links from content above */
+  border-top: 1px solid var(--color-border);
+}
+
+.project__link {
+  font-size: var(--size-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  position: relative;
+}
+
+.project__link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+
+  /* Accent underline — always visible on project links,
+     not just on hover. Draws the eye to the action. */
+  background-color: var(--color-accent);
+}
+
+.project__link:hover {
+  color: var(--color-accent);
+}
+
+
+/* ================================================================
+   9. CERTIFICATIONS SECTION
+================================================================ */
+
+.cert {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cert:last-child {
+  border-bottom: none;
+}
+
+.cert__body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  column-gap: var(--space-md);
+}
+
+.cert__name {
+  font-size: var(--size-base);
+  font-weight: bold;
+  line-height: 1.3;
+  grid-column: 1;
+}
+
+.cert__issuer {
+  font-size: var(--size-sm);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-xs);
+  grid-column: 1;
+}
+
+.cert__year {
+  font-size: var(--size-sm);
+  color: var(--color-ink-muted);
+  letter-spacing: 0.05em;
+
+  /* Year sits top-right of the cert row */
+  grid-column: 2;
+  grid-row: 1;
+  text-align: right;
+}
+
+.cert__id {
+  font-size: var(--size-xs);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-xs);
+  grid-column: 1 / -1;
+}
+
+.cert__verify {
+  font-size: var(--size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  position: relative;
+  display: inline-block;
+  margin-top: var(--space-xs);
+}
+
+.cert__verify::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+
+/* ================================================================
+   10. CONTACT SECTION
+================================================================ */
+
+.contact__line {
+  font-size: var(--size-base);
+  color: var(--color-ink);
+  max-width: 55ch;
+  margin-bottom: var(--space-md);
+  line-height: 1.7;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+
+  /* No gap — borders between items create the separation */
+  gap: 0;
+}
+
+.contact__item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact__item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.contact__label {
+  font-size: var(--size-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.contact__value {
+  font-size: var(--size-sm);
+  color: var(--color-ink);
+  position: relative;
+  display: inline-block;
+}
+
+.contact__value::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 0.2s ease;
+}
+
+.contact__value:hover::after {
+  width: 100%;
+}
+
+.contact__value:hover {
+  color: var(--color-accent);
+}
+
+
+/* ================================================================
+   11. FOOTER
+================================================================ */
+
+.footer {
+  padding: var(--space-md) 0 var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-md);
+}
+
+.footer p {
+  font-size: var(--size-xs);
+  letter-spacing: 0.1em;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+}
+
+
+/* ================================================================
+   12. RESPONSIVE — MOBILE (below 768px)
+   Sidebar becomes a top strip.
+   All grid layouts collapse to single column.
+================================================================ */
+
+@media (max-width: 768px) {
+
+  /* Collapse the two-column layout to single column */
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Sidebar becomes a horizontal top bar ─────────────────── */
+  .sidebar {
+    position: static;      /* No longer sticky — flows with page    */
+    height: auto;          /* No longer full viewport height         */
+    flex-direction: row;   /* Identity and links sit side by side    */
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-md);
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+
+    /* Sticks to top of viewport as user scrolls */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-bg);
+  }
+
+  /* Hide nav and links in mobile sidebar — too cramped */
+  .sidebar__nav,
+  .sidebar__links,
+  .sidebar__label,
+  .sidebar__institution {
+    display: none;
+  }
+
+  /* Name is smaller in the mobile top bar */
+  .sidebar__name {
+    font-size: var(--size-md);
+    line-height: 1.2;
+  }
+
+  .sidebar__role {
+    font-size: var(--size-xs);
+  }
+
+  /* ── Main content: reduce padding on mobile ───────────────── */
+  .main {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  /* ── Projects: single column on mobile ───────────────────── */
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Skills: stack category above list ───────────────────── */
+  .skills__group {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+
+  /* ── Contact: label above value ──────────────────────────── */
+  .contact__item {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: var(--space-sm) 0;
+  }
+
+  /* ── Cert: stack year below name on mobile ────────────────── */
+  .cert__body {
+    grid-template-columns: 1fr;
+  }
+
+  .cert__year {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+  }
+
+}
