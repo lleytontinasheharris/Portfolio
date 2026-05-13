@@ -25,12 +25,12 @@
 
 :root {
 
-  /* Colour palette — Steel & Amber */
-  --color-bg:         #F8F9FA;   /* Clean steel white             */
-  --color-ink:        #0F1419;   /* Deep charcoal                 */
-  --color-accent:     #E05C00;   /* Burnt amber                   */
-  --color-ink-muted:  #6B7280;   /* Cool grey                     */
-  --color-border:     #DDE1E7;   /* Steel border                  */
+  /* Colour palette — Terminal */
+  --color-bg:         #0D1117;   /* GitHub dark background        */
+  --color-ink:        #E6EDF3;   /* Cool light grey text          */
+  --color-accent:     #58A6FF;   /* Electric blue                 */
+  --color-ink-muted:  #8B949E;   /* GitHub muted grey             */
+  --color-border:     #21262D;   /* Dark border                   */
 
   /* Typography — unchanged */
   --font-primary: 'Courier New', Courier, monospace;
@@ -402,8 +402,9 @@ button {
 
 /* On hover — ink inverts (background fills, text goes light) */
 .skills__tag:hover {
-  background-color: var(--color-ink);
+  background-color: var(--color-accent);
   color: var(--color-bg);
+  border-color: var(--color-accent);
 }
 
 
