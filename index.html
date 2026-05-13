@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Lleyton Tinashe Harris — Aspiring AI Engineer & Software Developer. 
-      Building practical solutions in Zimbabwe."
+      content="Lleyton Tinashe Harris — Aspiring AI Engineer | Software Developer."
     />
     <meta name="author" content="Lleyton Tinashe Harris" />
-
-    <!-- Open Graph -->
     <meta property="og:title" content="Lleyton Tinashe Harris" />
     <meta
       property="og:description"
-      content="Aspiring AI Engineer & Software Developer. 
-      Building real solutions for real African problems."
+      content="Aspiring AI Engineer | Software Developer."
     />
     <meta property="og:type" content="website" />
 
@@ -32,72 +28,175 @@
 
   <body>
 
+    <!-- Animated background blobs -->
+    <div class="bg-blobs">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="blob blob--3"></div>
+    </div>
+
     <!-- ============================================================
-         NAVBAR — Always visible
+         NAVBAR
     =============================================================== -->
     <nav class="navbar" id="navbar">
-      <div class="navbar__container">
-        <a href="#" class="navbar__logo" id="home-link">LTH</a>
-        
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a href="#" class="navbar__link" data-page="about">
-              01 — ABOUT
-            </a>
+      <div class="navbar__inner">
+
+        <!-- Logo -->
+        <button class="navbar__logo" id="home-btn">
+          <span class="navbar__logo-text">LTH</span>
+        </button>
+
+        <!-- Nav links -->
+        <ul class="navbar__links">
+          <li>
+            <button class="nav-btn" data-page="about">
+              <span class="nav-btn__icon">◆</span>
+              <span class="nav-btn__label">About</span>
+            </button>
           </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link" data-page="skills">
-              02 — SKILLS
-            </a>
+          <li>
+            <button class="nav-btn" data-page="skills">
+              <span class="nav-btn__icon">◆</span>
+              <span class="nav-btn__label">Skills</span>
+            </button>
           </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link" data-page="projects">
-              03 — PROJECTS
-            </a>
+          <li>
+            <button class="nav-btn" data-page="projects">
+              <span class="nav-btn__icon">◆</span>
+              <span class="nav-btn__label">Projects</span>
+            </button>
           </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link" data-page="certifications">
-              04 — CERTIFICATIONS
-            </a>
+          <li>
+            <button class="nav-btn" data-page="certifications">
+              <span class="nav-btn__icon">◆</span>
+              <span class="nav-btn__label">Certifications</span>
+            </button>
           </li>
-          <li class="navbar__item">
-            <a href="#" class="navbar__link" data-page="contact">
-              05 — CONTACT
-            </a>
+          <li>
+            <button class="nav-btn" data-page="contact">
+              <span class="nav-btn__icon">◆</span>
+              <span class="nav-btn__label">Contact</span>
+            </button>
           </li>
         </ul>
+
+        <!-- Mobile menu toggle -->
+        <button class="navbar__hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
       </div>
     </nav>
 
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-menu__links">
+        <li>
+          <button class="mobile-nav-btn" data-page="about">About</button>
+        </li>
+        <li>
+          <button class="mobile-nav-btn" data-page="skills">Skills</button>
+        </li>
+        <li>
+          <button class="mobile-nav-btn" data-page="projects">Projects</button>
+        </li>
+        <li>
+          <button class="mobile-nav-btn" data-page="certifications">
+            Certifications
+          </button>
+        </li>
+        <li>
+          <button class="mobile-nav-btn" data-page="contact">Contact</button>
+        </li>
+      </ul>
+    </div>
+
     <!-- ============================================================
-         LANDING PAGE (Initial view)
+         LANDING PAGE
     =============================================================== -->
-    <div id="landing-page" class="page page--active">
-      <section class="section section--landing">
-        <div class="landing">
-          <h1 class="landing__name">Lleyton<br />Tinashe<br />Harris</h1>
-          
-          <div class="landing__subtitle">
-            <p class="landing__title">Aspiring AI Engineer</p>
-            <p class="landing__title">Software Developer</p>
+    <div id="landing" class="landing page--visible">
+
+      <div class="landing__content">
+
+        <!-- Status badge -->
+        <div class="landing__badge">
+          <span class="badge__dot"></span>
+          <span class="badge__text">Available for Attachment</span>
+        </div>
+
+        <!-- Name -->
+        <h1 class="landing__name">
+          <span class="landing__name-line">Lleyton</span>
+          <span class="landing__name-line">Tinashe</span>
+          <span class="landing__name-line landing__name-line--accent">Harris</span>
+        </h1>
+
+        <!-- Roles -->
+        <div class="landing__roles">
+          <span class="role">Aspiring AI Engineer</span>
+          <span class="role__divider">✦</span>
+          <span class="role">Software Developer</span>
+          <span class="role__divider">✦</span>
+          <span class="role">NUST, Zimbabwe</span>
+        </div>
+
+        <!-- Intro -->
+        <p class="landing__intro">
+          Building systems to solve real African problems. 
+          From AI platforms to financial inclusion tools — 
+          impact-first, always.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="landing__cta">
+          <button class="btn btn--primary" data-page="projects">
+            View My Work
+            <span class="btn__arrow">→</span>
+          </button>
+          <button class="btn btn--secondary" data-page="contact">
+            Get In Touch
+          </button>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="landing__stats">
+          <div class="stat">
+            <span class="stat__number">4</span>
+            <span class="stat__label">Projects</span>
           </div>
-
-          <p class="landing__intro">
-            Third-year Computer Science student at NUST, Zimbabwe. 
-            Building systems to solve real problems.
-          </p>
-
-          <div class="landing__scroll">
-            <span>SELECT A SECTION ABOVE</span>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number">10+</span>
+            <span class="stat__label">Technologies</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number">1</span>
+            <span class="stat__label">Certification</span>
+          </div>
+          <div class="stat__divider"></div>
+          <div class="stat">
+            <span class="stat__number">3rd</span>
+            <span class="stat__label">Year</span>
           </div>
         </div>
-      </section>
+
+      </div>
+
     </div>
 
     <!-- ============================================================
          PAGE CONTAINER (Content pages load here)
     =============================================================== -->
-    <div id="page-container" class="page"></div>
+    <div id="page-container" class="page--hidden">
+    </div>
+
+    <!-- Page loader -->
+    <div class="page-loader" id="page-loader">
+      <div class="loader__spinner"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>

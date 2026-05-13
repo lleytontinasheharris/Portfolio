@@ -1,108 +1,161 @@
-<section class="section section--page">
-  <div class="section__header">
-    <span class="section__number">03</span>
-    <h2 class="section__title">Projects</h2>
-  </div>
+<div class="page-content">
 
-  <div class="section__body">
-    <div class="projects__grid">
-
-      <!-- PROJECT 01: Nhimbe AI -->
-      <article class="project">
-        <div class="project__meta">
-          <span class="project__index">P.01</span>
-          <span class="project__status">In Development</span>
-        </div>
-        <h3 class="project__name">Nhimbe AI</h3>
-        <p class="project__type">Agricultural Knowledge Platform</p>
-        <p class="project__description">
-          A web-based advisory platform that bridges the information gap 
-          for smallholder farmers in Zimbabwe through AI-powered farming 
-          advice, community forums, and localized agricultural resources.
-        </p>
-        <ul class="project__stack">
-          <li>Python</li>
-          <li>Django</li>
-          <li>PostgreSQL</li>
-          <li>React</li>
-        </ul>
-        <div class="project__links">
-          <a href="https://github.com/lleytontinasheharris" class="project__link" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
-      <!-- PROJECT 02: Batana -->
-      <article class="project">
-        <div class="project__meta">
-          <span class="project__index">P.02</span>
-          <span class="project__status">Hackathon Prototype</span>
-        </div>
-        <h3 class="project__name">Batana</h3>
-        <p class="project__type">Financial Inclusion Platform</p>
-        <p class="project__description">
-          Mobile-first platform pitched to ZB Bank Zimbabwe that gives 
-          unbanked citizens access to savings, credit, insurance, and 
-          community investment via USSD.
-        </p>
-        <ul class="project__stack">
-          <li>Node.js</li>
-          <li>Next.js</li>
-          <li>TypeScript</li>
-          <li>PostgreSQL</li>
-        </ul>
-        <div class="project__links">
-          <a href="https://github.com/lleytontinasheharris" class="project__link" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
-      <!-- PROJECT 03: PropVerifyZW -->
-      <article class="project">
-        <div class="project__meta">
-          <span class="project__index">P.03</span>
-          <span class="project__status">Proposal Stage</span>
-        </div>
-        <h3 class="project__name">PropVerifyZW</h3>
-        <p class="project__type">Real Estate Marketplace</p>
-        <p class="project__description">
-          A government-backed digital property marketplace that tackles 
-          fraud in Zimbabwe's real estate sector through verified listings 
-          and Deeds Registry integration.
-        </p>
-        <ul class="project__stack">
-          <li>React</li>
-          <li>Node.js</li>
-          <li>PostgreSQL</li>
-          <li>TypeScript</li>
-        </ul>
-        <div class="project__links">
-          <a href="https://github.com/lleytontinasheharris" class="project__link" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
-      <!-- PROJECT 04: MineSafe -->
-      <article class="project">
-        <div class="project__meta">
-          <span class="project__index">P.04</span>
-          <span class="project__status">University Prototype</span>
-        </div>
-        <h3 class="project__name">MineSafe</h3>
-        <p class="project__type">Mine Safety Detection System</p>
-        <p class="project__description">
-          A computer vision prototype that validates complete protective 
-          equipment at mine entrances and grants access only when all gear 
-          is detected.
-        </p>
-        <ul class="project__stack">
-          <li>Python</li>
-          <li>OpenCV</li>
-          <li>TensorFlow</li>
-          <li>React</li>
-        </ul>
-        <div class="project__links">
-          <a href="https://github.com/lleytontinasheharris" class="project__link" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </article>
-
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="page-header__icon">◈</div>
+    <div>
+      <p class="page-header__number">03 / 05</p>
+      <h1 class="page-header__title">Projects</h1>
     </div>
   </div>
-</section>
+
+  <!-- Projects grid -->
+  <div class="projects__grid">
+
+    <!-- Nhimbe AI -->
+    <div class="glass-card project-card">
+      <div class="project-card__header">
+        <div class="project-card__meta">
+          <span class="project-card__index">P.01</span>
+          <span class="project-card__status project-card__status--active">
+            In Development
+          </span>
+        </div>
+        <div class="project-card__icon">🌱</div>
+      </div>
+      <h3 class="project-card__name">Nhimbe AI</h3>
+      <p class="project-card__type">Agricultural Knowledge Platform</p>
+      <p class="project-card__desc">
+        A web-based advisory platform bridging the information gap for 
+        smallholder farmers in Zimbabwe through AI-powered advice and 
+        community knowledge sharing.
+      </p>
+      <div class="project-card__stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Django</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">React</span>
+      </div>
+      <div class="project-card__footer">
+        <a
+          href="https://github.com/lleytintintasheharris/Nhimbe-Ai"
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub →
+        </a>
+      </div>
+    </div>
+
+    <!-- Batana -->
+    <div class="glass-card project-card">
+      <div class="project-card__header">
+        <div class="project-card__meta">
+          <span class="project-card__index">P.02</span>
+          <span class="project-card__status project-card__status--prototype">
+            Hackathon Prototype
+          </span>
+        </div>
+        <div class="project-card__icon">💳</div>
+      </div>
+      <h3 class="project-card__name">Batana</h3>
+      <p class="project-card__type">Financial Inclusion Platform</p>
+      <p class="project-card__desc">
+        Mobile-first platform pitched to ZB Bank Zimbabwe giving unbanked 
+        citizens access to savings, credit, and insurance via USSD. 
+        Name means "together" in Shona/Ndebele.
+      </p>
+      <div class="project-card__stack">
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">Next.js</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">PostgreSQL</span>
+      </div>
+      <div class="project-card__footer">
+        <a
+          href="https://github.com/lleytontinasheharris/Batana"
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub →
+        </a>
+      </div>
+    </div>
+
+    <!-- PropVerifyZW -->
+    <div class="glass-card project-card">
+      <div class="project-card__header">
+        <div class="project-card__meta">
+          <span class="project-card__index">P.03</span>
+          <span class="project-card__status project-card__status--proposal">
+            Proposal Stage
+          </span>
+        </div>
+        <div class="project-card__icon">🏠</div>
+      </div>
+      <h3 class="project-card__name">PropVerifyZW</h3>
+      <p class="project-card__type">Real Estate Marketplace</p>
+      <p class="project-card__desc">
+        A verified digital property marketplace tackling fraud in Zimbabwe's 
+        real estate sector through Deeds Registry integration and 
+        licensed agent verification.
+      </p>
+      <div class="project-card__stack">
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">Node.js</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">TypeScript</span>
+      </div>
+      <div class="project-card__footer">
+        <a
+          href="https://github.com/lleytontinasheharris/PropVeifyZW-repo"
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub →
+        </a>
+      </div>
+    </div>
+
+    <!-- MineSafe -->
+    <div class="glass-card project-card">
+      <div class="project-card__header">
+        <div class="project-card__meta">
+          <span class="project-card__index">P.04</span>
+          <span class="project-card__status project-card__status--prototype">
+            University Prototype
+          </span>
+        </div>
+        <div class="project-card__icon">⛏</div>
+      </div>
+      <h3 class="project-card__name">MineSafe</h3>
+      <p class="project-card__type">Mine Safety Detection System</p>
+      <p class="project-card__desc">
+        Computer vision prototype that validates complete protective equipment 
+        at mine entrances. Real-time 3D feedback and access control — 
+        grants entry only when all gear is detected.
+      </p>
+      <div class="project-card__stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">OpenCV</span>
+        <span class="stack-tag">TensorFlow</span>
+        <span class="stack-tag">React</span>
+      </div>
+      <div class="project-card__footer">
+        <a
+          href="https://github.com/lleytontinasheharris/MineSafe"
+          class="project-card__link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub →
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
