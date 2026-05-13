@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Lleyton Tinashe Harris - Computer Science Student |Aspiring AI Engineer | Software Developer. 
+      content="Lleyton Tinashe Harris — Aspiring AI Engineer & Software Developer. 
       Building practical solutions in Zimbabwe."
     />
     <meta name="author" content="Lleyton Tinashe Harris" />
@@ -33,66 +33,71 @@
   <body>
 
     <!-- ============================================================
-         LANDING PAGE CONTAINER
-         This is the initial view users see
+         NAVBAR — Always visible
+    =============================================================== -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar__container">
+        <a href="#" class="navbar__logo" id="home-link">LTH</a>
+        
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="#" class="navbar__link" data-page="about">
+              01 — ABOUT
+            </a>
+          </li>
+          <li class="navbar__item">
+            <a href="#" class="navbar__link" data-page="skills">
+              02 — SKILLS
+            </a>
+          </li>
+          <li class="navbar__item">
+            <a href="#" class="navbar__link" data-page="projects">
+              03 — PROJECTS
+            </a>
+          </li>
+          <li class="navbar__item">
+            <a href="#" class="navbar__link" data-page="certifications">
+              04 — CERTIFICATIONS
+            </a>
+          </li>
+          <li class="navbar__item">
+            <a href="#" class="navbar__link" data-page="contact">
+              05 — CONTACT
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         LANDING PAGE (Initial view)
     =============================================================== -->
     <div id="landing-page" class="page page--active">
+      <section class="section section--landing">
+        <div class="landing">
+          <h1 class="landing__name">Lleyton<br />Tinashe<br />Harris</h1>
+          
+          <div class="landing__subtitle">
+            <p class="landing__title">Aspiring AI Engineer</p>
+            <p class="landing__title">Software Developer</p>
+          </div>
 
-      <!-- Main landing content -->
-      <div class="landing">
-
-        <!-- Identity section -->
-        <div class="landing__hero">
-          <h1 class="landing__name">Lleyton Tinashe Harris</h1>
-          <p class="landing__tagline">Computer Science Student<br />Aspiring AI Engineer<br />Software Developer</p>
           <p class="landing__intro">
             Third-year Computer Science student at NUST, Zimbabwe. 
-            Building practical solutions to real problems through code, 
-            collaboration, and continuous learning.
+            Building systems to solve real problems.
           </p>
+
+          <div class="landing__scroll">
+            <span>SELECT A SECTION ABOVE</span>
+          </div>
         </div>
-
-        <!-- Navigation menu -->
-        <nav class="landing__nav">
-          <p class="landing__nav-label">EXPLORE</p>
-          <ul class="landing__menu">
-            <li>
-              <a href="#" class="landing__link" data-page="about">About</a>
-            </li>
-            <li>
-              <a href="#" class="landing__link" data-page="skills">Skills</a>
-            </li>
-            <li>
-              <a href="#" class="landing__link" data-page="projects">Projects</a>
-            </li>
-            <li>
-              <a href="#" class="landing__link" data-page="certifications">
-                Certifications
-              </a>
-            </li>
-            <li>
-              <a href="#" class="landing__link" data-page="contact">Contact</a>
-            </li>
-          </ul>
-        </nav>
-
-      </div>
-
+      </section>
     </div>
-    <!-- /LANDING PAGE -->
 
     <!-- ============================================================
-         PAGE CONTAINER
-         Other pages load here dynamically
+         PAGE CONTAINER (Content pages load here)
     =============================================================== -->
     <div id="page-container" class="page"></div>
-
-    <!-- ============================================================
-         BACK TO HOME BUTTON (shown on non-landing pages)
-    =============================================================== -->
-    <div id="back-button" class="back-button" style="display: none;">
-      <a href="#" class="back-button__link">← Back to Home</a>
-    </div>
 
     <script src="script.js"></script>
   </body>
