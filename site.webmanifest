@@ -1,5 +1,5 @@
 {
-  "name": "Lleyton Tinashe Harris - Portfolio",
+  "name": "Lleyton Tinashe Harris — Portfolio",
   "short_name": "LTH Portfolio",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#F5F0E8",
-  "background_color": "#F5F0E8",
+  "theme_color": "#F8F9FA",
+  "background_color": "#F8F9FA",
   "display": "standalone"
 }

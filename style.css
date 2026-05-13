@@ -19,42 +19,39 @@
 
 
 /* ================================================================
+  /* ================================================================
    1. CSS CUSTOM PROPERTIES
-   All colours, spacing, and font sizes defined once here.
-   Change a value here and it updates everywhere.
 ================================================================ */
 
 :root {
 
-  /* Colour palette — 3 colours only */
-  --color-bg:         #F5F0E8;   /* Aged paper — warm off-white        */
-  --color-ink:        #1A1A1A;   /* Ink black — all text               */
-  --color-accent:     #C1440E;   /* Oxide red — used sparingly         */
+  /* Colour palette — Steel & Amber */
+  --color-bg:         #F8F9FA;   /* Clean steel white             */
+  --color-ink:        #0F1419;   /* Deep charcoal                 */
+  --color-accent:     #E05C00;   /* Burnt amber                   */
+  --color-ink-muted:  #6B7280;   /* Cool grey                     */
+  --color-border:     #DDE1E7;   /* Steel border                  */
 
-  /* Derived shades — still within the palette, not new colours */
-  --color-ink-muted:  #5A5A5A;   /* For secondary text, labels         */
-  --color-border:     #D4CFC6;   /* Subtle border — warm, not grey     */
-
-  /* Typography */
+  /* Typography — unchanged */
   --font-primary: 'Courier New', Courier, monospace;
 
-  /* Font sizes — desktop */
-  --size-xs:    0.75rem;    /*  12px — labels, metadata     */
-  --size-sm:    0.875rem;   /*  14px — secondary text       */
-  --size-base:  1rem;       /*  16px — body text            */
-  --size-md:    1.25rem;    /*  20px — project names        */
-  --size-lg:    1.75rem;    /*  28px — section titles       */
-  --size-xl:    2.5rem;     /*  40px — sidebar name         */
-  --size-xxl:   3.5rem;     /*  56px — sidebar name large   */
+  /* Font sizes — unchanged */
+  --size-xs:    0.75rem;
+  --size-sm:    0.875rem;
+  --size-base:  1rem;
+  --size-md:    1.25rem;
+  --size-lg:    1.75rem;
+  --size-xl:    2.5rem;
+  --size-xxl:   3.5rem;
 
-  /* Spacing scale */
-  --space-xs:   0.5rem;     /*   8px */
-  --space-sm:   1rem;       /*  16px */
-  --space-md:   2rem;       /*  32px */
-  --space-lg:   4rem;       /*  64px */
-  --space-xl:   6rem;       /*  96px */
+  /* Spacing — unchanged */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   6rem;
 
-  /* Layout */
+  /* Layout — unchanged */
   --sidebar-width: 280px;
 }
 
