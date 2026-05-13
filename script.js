@@ -1,5 +1,5 @@
 /* ================================================================
-   LLEYTON TINASHE HARRIS — PORTFOLIO v4
+   LLEYTON TINASHE HARRIS — PORTFOLIO v5
    script.js — Complete Navigation & Interactions
 ================================================================ */
 
@@ -15,7 +15,7 @@ const CONFIG = {
     certifications: 'pages/certifications.html',
     contact:        'pages/contact.html'
   },
-  transitionDuration: 400
+  transitionDuration: 300
 };
 
 // ================================================================
@@ -35,12 +35,11 @@ const DOM = {
   landing:       document.getElementById('landing'),
   pageContainer: document.getElementById('page-container'),
   loader:        document.getElementById('page-loader'),
-  navbar:        document.getElementById('navbar'),
+  sidebar:       document.getElementById('sidebar'),
   homeBtn:       document.getElementById('home-btn'),
-  hamburger:     document.getElementById('hamburger'),
-  mobileMenu:    document.getElementById('mobile-menu'),
-  navBtns:       document.querySelectorAll('.nav-btn'),
-  mobileNavBtns: document.querySelectorAll('.mobile-nav-btn')
+  sidebarToggle: document.getElementById('sidebar-toggle'),
+  navLinks:      document.querySelectorAll('.nav-link'),
+  landingBtns:   document.querySelectorAll('.btn[data-page]')
 };
 
 // ================================================================
@@ -50,120 +49,96 @@ const DOM = {
 document.addEventListener('DOMContentLoaded', function () {
   initNavigation();
   initHomeButton();
-  initHamburger();
+  initSidebarToggle();
   initLandingButtons();
-  initScrollEffect();
+  initKeyboardShortcuts();
 });
 
 // ================================================================
-// NAVIGATION — Desktop navbar buttons
+// SIDEBAR NAVIGATION
 // ================================================================
 
 function initNavigation() {
-  DOM.navBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
+  DOM.navLinks.forEach(link => {
+    link.addEventListener('click', function () {
       const pageName = this.getAttribute('data-page');
       if (pageName && !state.isTransitioning) {
         navigateTo(pageName);
-        closeMobileMenu();
-      }
-    });
-  });
-
-  // Mobile nav buttons
-  DOM.mobileNavBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const pageName = this.getAttribute('data-page');
-      if (pageName && !state.isTransitioning) {
-        navigateTo(pageName);
-        closeMobileMenu();
+        closeSidebar();
       }
     });
   });
 }
 
 // ================================================================
-// HOME BUTTON — Logo click returns to landing
+// HOME BUTTON
 // ================================================================
 
 function initHomeButton() {
   if (DOM.homeBtn) {
-    DOM.homeBtn.addEventListener('click', function () {
+    DOM.homeBtn.addEventListener('click', function (e) {
+      e.preventDefault();
       if (!state.isTransitioning) {
         goHome();
+        closeSidebar();
       }
     });
   }
+}
+
+// ================================================================
+// SIDEBAR TOGGLE (Mobile)
+// ================================================================
+
+function initSidebarToggle() {
+  if (DOM.sidebarToggle) {
+    DOM.sidebarToggle.addEventListener('click', function () {
+      toggleSidebar();
+    });
+  }
+
+  // Close sidebar when clicking outside
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth <= 768) {
+      if (
+        DOM.sidebar.classList.contains('is-open') &&
+        !DOM.sidebar.contains(e.target) &&
+        !DOM.sidebarToggle.contains(e.target)
+      ) {
+        closeSidebar();
+      }
+    }
+  });
+}
+
+function toggleSidebar() {
+  DOM.sidebarToggle.classList.toggle('is-open');
+  DOM.sidebar.classList.toggle('is-open');
+}
+
+function closeSidebar() {
+  DOM.sidebarToggle.classList.remove('is-open');
+  DOM.sidebar.classList.remove('is-open');
 }
 
 // ================================================================
 // LANDING PAGE BUTTONS
-// "View My Work" and "Get In Touch"
 // ================================================================
 
 function initLandingButtons() {
-  const landingBtns = document.querySelectorAll('.btn[data-page]');
-
-  landingBtns.forEach(btn => {
+  DOM.landingBtns.forEach(btn => {
     btn.addEventListener('click', function () {
       const pageName = this.getAttribute('data-page');
       if (pageName && !state.isTransitioning) {
         navigateTo(pageName);
+        closeSidebar();
       }
     });
-  });
-}
-
-// ================================================================
-// HAMBURGER — Mobile menu toggle
-// ================================================================
-
-function initHamburger() {
-  if (DOM.hamburger) {
-    DOM.hamburger.addEventListener('click', function () {
-      toggleMobileMenu();
-    });
-  }
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function (e) {
-    if (
-      DOM.mobileMenu.classList.contains('is-open') &&
-      !DOM.mobileMenu.contains(e.target) &&
-      !DOM.hamburger.contains(e.target)
-    ) {
-      closeMobileMenu();
-    }
-  });
-}
-
-function toggleMobileMenu() {
-  DOM.hamburger.classList.toggle('is-open');
-  DOM.mobileMenu.classList.toggle('is-open');
-}
-
-function closeMobileMenu() {
-  DOM.hamburger.classList.remove('is-open');
-  DOM.mobileMenu.classList.remove('is-open');
-}
-
-// ================================================================
-// SCROLL EFFECT — Navbar background on scroll
-// ================================================================
-
-function initScrollEffect() {
-  window.addEventListener('scroll', function () {
-    if (window.scrollY > 20) {
-      DOM.navbar.style.background = 'rgba(10, 14, 39, 0.95)';
-    } else {
-      DOM.navbar.style.background = 'rgba(10, 14, 39, 0.7)';
-    }
   });
 }
 
 // ================================================================
 // NAVIGATE TO PAGE
-// Core function — loads a page with transitions
 // ================================================================
 
 async function navigateTo(pageName) {
@@ -181,7 +156,6 @@ async function navigateTo(pageName) {
     return;
   }
 
-  // Show loader
   showLoader();
 
   try {
@@ -227,7 +201,7 @@ async function navigateTo(pageName) {
     hideLoader();
   }
 
-  // Small delay before allowing next navigation
+  // Delay before allowing next navigation
   setTimeout(() => {
     state.isTransitioning = false;
   }, CONFIG.transitionDuration);
@@ -235,7 +209,6 @@ async function navigateTo(pageName) {
 
 // ================================================================
 // GO HOME
-// Return to landing page
 // ================================================================
 
 async function goHome() {
@@ -272,12 +245,10 @@ async function goHome() {
 
 // ================================================================
 // FADE OUT
-// Returns a promise that resolves after transition
 // ================================================================
 
 function fadeOut() {
   return new Promise(resolve => {
-    // Fade out whichever is currently visible
     if (DOM.landing.classList.contains('page--visible')) {
       DOM.landing.style.opacity = '0';
       DOM.landing.style.transition = `opacity ${CONFIG.transitionDuration}ms ease`;
@@ -300,30 +271,28 @@ function fadeOut() {
 
 // ================================================================
 // ACTIVE NAV LINK
-// Highlights correct navbar button
 // ================================================================
 
 function setActiveNavLink(pageName) {
   clearActiveNavLinks();
 
-  const activeBtn = document.querySelector(
-    `.nav-btn[data-page="${pageName}"]`
+  const activeLink = document.querySelector(
+    `.nav-link[data-page="${pageName}"]`
   );
 
-  if (activeBtn) {
-    activeBtn.classList.add('nav-btn--active');
+  if (activeLink) {
+    activeLink.classList.add('nav-link--active');
   }
 }
 
 function clearActiveNavLinks() {
-  DOM.navBtns.forEach(btn => {
-    btn.classList.remove('nav-btn--active');
+  DOM.navLinks.forEach(link => {
+    link.classList.remove('nav-link--active');
   });
 }
 
 // ================================================================
 // LOADER
-// Show and hide loading spinner
 // ================================================================
 
 function showLoader() {
@@ -340,7 +309,6 @@ function hideLoader() {
 
 // ================================================================
 // ERROR PAGE
-// Show a styled error if page fails to load
 // ================================================================
 
 function showErrorPage(message) {
@@ -353,20 +321,18 @@ function showErrorPage(message) {
         <div class="page-header__icon">!</div>
         <div>
           <p class="page-header__number">ERROR</p>
-          <h1 class="page-header__title">Page Not Found</h1>
+          <h1 class="page-header__title">Failed to Load</h1>
         </div>
       </div>
-      <div class="glass-card">
+      <div class="card">
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          Something went wrong loading this page.
+          There was an error loading this page.
         </p>
-        <p style="color: var(--text-muted); font-size: 0.85rem;">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
           ${message}
         </p>
-        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
-          If you are running this locally, open it through a local server.<br/>
-          Run: <strong style="color: var(--accent-cyan);">python -m http.server 8000</strong>
-          then visit <strong style="color: var(--accent-cyan);">localhost:8000</strong>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+          Make sure you're running this on a local server.
         </p>
       </div>
     </div>
@@ -379,15 +345,14 @@ function showErrorPage(message) {
 
 // ================================================================
 // CONTENT ANIMATIONS
-// Stagger animate cards when page loads
 // ================================================================
 
 function triggerContentAnimations() {
-  const cards = DOM.pageContainer.querySelectorAll('.glass-card');
+  const cards = DOM.pageContainer.querySelectorAll('.card');
 
   cards.forEach((card, index) => {
     card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
+    card.style.transform = 'translateY(16px)';
     card.style.transition = 'none';
 
     setTimeout(() => {
@@ -397,7 +362,7 @@ function triggerContentAnimations() {
       `;
       card.style.opacity = '1';
       card.style.transform = 'translateY(0)';
-    }, 100 + index * 80);
+    }, 80 + index * 60);
   });
 }
 
@@ -412,20 +377,20 @@ document.addEventListener('keydown', function (e) {
   }
 
   const shortcuts = {
-    'h': () => goHome(),
-    'H': () => goHome(),
-    '1': () => navigateTo('about'),
-    '2': () => navigateTo('skills'),
-    '3': () => navigateTo('projects'),
-    '4': () => navigateTo('certifications'),
-    '5': () => navigateTo('contact'),
-    'Escape': () => goHome()
+    'h': () => { goHome(); closeSidebar(); },
+    'H': () => { goHome(); closeSidebar(); },
+    '1': () => { navigateTo('about'); closeSidebar(); },
+    '2': () => { navigateTo('skills'); closeSidebar(); },
+    '3': () => { navigateTo('projects'); closeSidebar(); },
+    '4': () => { navigateTo('certifications'); closeSidebar(); },
+    '5': () => { navigateTo('contact'); closeSidebar(); },
+    'Escape': () => { goHome(); closeSidebar(); }
   };
 
   if (shortcuts[e.key]) {
     shortcuts[e.key]();
 
-    // Sync active nav link for number shortcuts
+    // Sync active nav link
     const pageMap = {
       '1': 'about',
       '2': 'skills',
