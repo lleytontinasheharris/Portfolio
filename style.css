@@ -359,12 +359,7 @@ button {
 ================================================================ */
 
 .skills__group {
-  /* Each group sits on its own row with clear separation */
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  align-items: start;
-  gap: var(--space-sm);
-  padding: var(--space-sm) 0;
+  padding: var(--space-md) 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -374,35 +369,44 @@ button {
 
 .skills__category {
   font-size: var(--size-xs);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
   font-weight: normal;
-
-  /* Aligns with the first item in the skill list */
-  padding-top: 2px;
+  margin-bottom: var(--space-sm);
 }
 
 .skills__list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-sm);
+  gap: var(--space-xs);
 }
 
-.skills__list li {
-  font-size: var(--size-sm);
+/* ── The tag itself ───────────────────────────────────────────── */
+
+.skills__tag {
+  font-family: var(--font-primary);
+  font-size: var(--size-xs);
+  letter-spacing: 0.08em;
   color: var(--color-ink);
+
+  /* The border is what defines each tag */
+  border: 1px solid var(--color-ink);
+  padding: 4px 10px;
+
+  /* Subtle transition — tag responds to hover */
+  transition: 
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  /* Prevent tags from shrinking weirdly on small screens */
+  white-space: nowrap;
 }
 
-/* Editorial separator between skill items */
-.skills__list li::after {
-  content: ' /';
-  color: var(--color-ink-muted);
-  margin-left: var(--space-xs);
-}
-
-.skills__list li:last-child::after {
-  content: '';
+/* On hover — ink inverts (background fills, text goes light) */
+.skills__tag:hover {
+  background-color: var(--color-ink);
+  color: var(--color-bg);
 }
 
 
