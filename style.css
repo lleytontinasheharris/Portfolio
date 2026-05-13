@@ -130,8 +130,8 @@ button {
 
 /* ================================================================
    4. SIDEBAR
-   Fixed to the viewport. Always visible while main scrolls.
-   Contains identity, navigation, and external links.
+   Three zones: identity card, navigation, external links
+   Fixed to viewport, organized vertically with clear separation
 ================================================================ */
 
 .sidebar {
@@ -139,40 +139,40 @@ button {
   top: 0;
   height: 100vh;
 
-  /* Stacks identity, nav, and links vertically with space between */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: var(--space-lg);
 
   padding: var(--space-lg) var(--space-md);
-
-  /* Right border separates sidebar from main — using warm border */
   border-right: 1px solid var(--color-border);
-
-  /* Sidebar does not scroll with the page */
   overflow: hidden;
 }
 
-/* ── Sidebar: Identity block ──────────────────────────────────── */
+/* ── ZONE 1: IDENTITY CARD ───────────────────────────────────── */
+
+.sidebar__card {
+  border: 1px solid var(--color-accent);
+  border-radius: 2px;
+  padding: var(--space-md);
+  background-color: rgba(88, 166, 255, 0.05);
+}
 
 .sidebar__label {
   font-size: var(--size-xs);
   letter-spacing: 0.2em;
-  color: var(--color-ink-muted);
-  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xs);
 }
 
 .sidebar__name {
-  /* The largest text on the page — your name dominates the sidebar */
   font-size: var(--size-xl);
   font-weight: bold;
   line-height: 1.05;
   letter-spacing: -0.02em;
-
-  /* Oxide red — your name is the one accent use in the sidebar */
   color: var(--color-accent);
-
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .sidebar__role {
@@ -182,12 +182,31 @@ button {
 }
 
 .sidebar__institution {
-  font-size: var(--size-sm);
+  font-size: var(--size-xs);
+  letter-spacing: 0.05em;
   color: var(--color-ink-muted);
   margin-top: var(--space-xs);
 }
 
-/* ── Sidebar: Navigation ──────────────────────────────────────── */
+/* ── ZONE 2 & 3: SHARED ZONE STYLES ──────────────────────────– */
+
+.sidebar__zone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.sidebar__zone-label {
+  font-size: var(--size-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: bold;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── NAVIGATION ──────────────────────────────────────────────── */
 
 .sidebar__nav ul {
   display: flex;
@@ -197,37 +216,34 @@ button {
 
 .sidebar__nav a {
   font-size: var(--size-sm);
-  color: var(--color-ink-muted);
+  color: var(--color-ink);
   letter-spacing: 0.05em;
   display: inline-block;
-  padding: 2px 0;
-
-  /* Underline grows from left on hover — CSS only, no JS */
+  padding: 4px 0;
   position: relative;
+  transition: color 0.2s ease;
 }
 
 .sidebar__nav a::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background-color: var(--color-accent);
-
-  /* Transition for the underline — this is the one motion we allow */
   transition: width 0.2s ease;
 }
 
 .sidebar__nav a:hover {
-  color: var(--color-ink);
+  color: var(--color-accent);
 }
 
 .sidebar__nav a:hover::after {
   width: 100%;
 }
 
-/* ── Sidebar: External links ──────────────────────────────────── */
+/* ── EXTERNAL LINKS ──────────────────────────────────────────── */
 
 .sidebar__links {
   display: flex;
@@ -236,41 +252,39 @@ button {
 }
 
 .sidebar__link {
-  font-size: var(--size-xs);
-  letter-spacing: 0.1em;
-  color: var(--color-ink-muted);
-  text-transform: uppercase;
+  font-size: var(--size-sm);
+  letter-spacing: 0.05em;
+  color: var(--color-ink);
   display: inline-block;
-  padding: 2px 0;
-
-  /* Same underline treatment as nav */
+  padding: 4px 0;
   position: relative;
+  transition: color 0.2s ease;
 }
 
 .sidebar__link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 2px;
   background-color: var(--color-accent);
   transition: width 0.2s ease;
 }
 
 .sidebar__link:hover {
-  color: var(--color-ink);
+  color: var(--color-accent);
 }
 
 .sidebar__link:hover::after {
   width: 100%;
 }
 
-/* Accent variant — for CV download link when added */
+/* Accent variant for Download CV */
 .sidebar__link--accent {
   color: var(--color-accent);
+  font-weight: bold;
 }
-
 
 /* ================================================================
    5. SECTION STRUCTURE (shared across all sections)
