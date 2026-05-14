@@ -1,63 +1,192 @@
-<div class="page-content">
-
-  <!-- Page header -->
-  <div class="page-header">
-    <div class="page-header__icon">[01]</div>
-    <div>
-      <p class="page-header__number">01 / 05</p>
-      <h1 class="page-header__title">About Me</h1>
-    </div>
-  </div>
-
-  <!-- Lead paragraph -->
-  <div class="card about__lead">
-    <p>
-      I'm a third-year Computer Science student at NUST in Zimbabwe, 
-      building systems to solve problems that actually exist — not 
-      hypothetical ones, but real ones I see around me.
-    </p>
-  </div>
-
-  <!-- About blocks -->
-  <div class="about__grid">
-
-    <div class="card about__card">
-      <div class="about__card-icon">⚡</div>
-      <h3 class="about__card-title">The Work</h3>
-      <p>
-        Nhimbe AI helps smallholder farmers access knowledge they've 
-        never had. Batana gives unbanked Zimbabweans a path to credit. 
-        PropVerifyZW fights property fraud. MineSafe keeps miners alive.
-      </p>
-      <p>
-        These aren't portfolio projects. They're attempts to move the 
-        needle on real world problems.
-      </p>
+<div class="page-container">
+    
+    <div class="page-header">
+        <div class="page-header__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+        </div>
+        <div>
+            <h1 class="page-title">About Me</h1>
+        </div>
     </div>
 
-    <div class="card about__card">
-      <div class="about__card-icon">◎</div>
-      <h3 class="about__card-title">Technical Foundation</h3>
-      <p>
-        I work with Python, JavaScript, SQL, React, Django, and Node.js. 
-        Comfortable picking up unfamiliar tools when a project needs them, 
-        managing multiple commitments, and working independently or in a team.
-      </p>
+    <div class="content-card featured-card">
+        <p class="lead-text">
+            I'm a third-year Computer Science student at NUST in Zimbabwe, 
+            building systems to solve problems that actually exist not 
+            hypothetical ones, but real ones I see around me.
+        </p>
     </div>
 
-    <div class="card about__card about__card--wide">
-      <div class="about__card-icon">◈</div>
-      <h3 class="about__card-title">The Mission</h3>
-      <p>
-        My ultimate goal is to build tailor-made solutions for African 
-        people. Systems large enough to power big-scale operations, 
-        systems small enough for a local trader to use.
-      </p>
-      <p class="about__highlight">
-        "Scale doesn't move me. Impact does."
-      </p>
-    </div>
+    <div class="content-grid">
+        
+        <div class="content-card">
+            <div class="card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+            </div>
+            <h3>The Work</h3>
+            <p>
+                Nhimbe AI helps smallholder farmers access knowledge they've 
+                never had. Batana gives unbanked Zimbabweans a path to credit. 
+                PropVerifyZW fights property fraud. MineSafe keeps miners alive.
+            </p>
+            <p>
+                These aren't portfolio projects. They're attempts to move the 
+                needle on real-world problems.
+            </p>
+        </div>
 
-  </div>
+        <div class="content-card">
+            <div class="card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                    <polyline points="2 17 12 22 22 17"/>
+                    <polyline points="2 12 12 17 22 12"/>
+                </svg>
+            </div>
+            <h3>Technical Foundation</h3>
+            <p>
+                I work with Python, JavaScript, SQL, React, Django, and Node.js. 
+                Comfortable picking up unfamiliar tools when a project needs them, 
+                managing multiple commitments, and working independently or in a team.
+            </p>
+        </div>
+
+        <div class="content-card full-width">
+            <div class="card-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <h3>The Mission</h3>
+            <p>
+                My ultimate goal is to build tailor-made solutions for African 
+                people. Systems large enough to power big-scale operations, 
+                systems small enough for a local trader to use.
+            </p>
+            <blockquote class="highlight-quote">
+                "Scale doesn't move me. Impact does."
+            </blockquote>
+        </div>
+
+    </div>
 
 </div>
+
+<style>
+.page-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header__icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 165, 250, 0.1);
+    border: 2px solid var(--accent-primary);
+    border-radius: 16px;
+    color: var(--accent-primary);
+    box-shadow: var(--glow-sm);
+}
+
+.page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.content-card {
+    padding: 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    margin-bottom: 2rem;
+}
+
+.featured-card {
+    border-color: var(--accent-primary);
+    background: rgba(96, 165, 250, 0.05);
+}
+
+.lead-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 165, 250, 0.1);
+    border: 2px solid var(--accent-primary);
+    border-radius: 12px;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+}
+
+.content-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.content-card p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.highlight-quote {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    border-left: 4px solid var(--accent-primary);
+    background: rgba(96, 165, 250, 0.08);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .page-title { font-size: 2rem; }
+    .content-grid { grid-template-columns: 1fr; }
+    .content-card { padding: 2rem; }
+}
+</style>

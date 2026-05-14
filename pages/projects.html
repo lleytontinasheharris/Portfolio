@@ -1,139 +1,1042 @@
-<div class="page-content">
+<div class="page-container">
 
-  <!-- Page header -->
-  <div class="page-header">
-    <div class="page-header__icon">[03]</div>
-    <div>
-      <p class="page-header__number">03 / 05</p>
-      <h1 class="page-header__title">Projects</h1>
-    </div>
-  </div>
-
-  <!-- Projects grid -->
-  <div class="projects__grid">
-
-    <!-- Nhimbe AI -->
-    <div class="card project-card">
-      <div class="project-card__header">
-        <div class="project-card__meta">
-          <span class="project-card__index">P.01</span>
-          <span class="project-card__status project-card__status--active">
-            In Development
-          </span>
+    <div class="page-header">
+        <div class="page-header__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
         </div>
-        <div class="project-card__icon">⚡</div>
-      </div>
-      <h3 class="project-card__name">Nhimbe AI</h3>
-      <p class="project-card__type">Agricultural Knowledge Platform</p>
-      <p class="project-card__desc">
-        A web-based advisory platform bridging the information gap for 
-        smallholder farmers in Zimbabwe through AI-powered advice and 
-        community knowledge sharing.
-      </p>
-      <div class="project-card__stack">
-        <span class="stack-tag">Python</span>
-        <span class="stack-tag">Django</span>
-        <span class="stack-tag">PostgreSQL</span>
-        <span class="stack-tag">React</span>
-      </div>
-      <div class="project-card__footer">
-        <a
-          href="https://github.com/lleytintintasheharris/Nhimbe-Ai"
-          class="project-card__link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub →
-        </a>
-      </div>
+        <div>
+            <h1 class="page-title">Projects</h1>
+        </div>
     </div>
 
-    <!-- Batana -->
-    <div class="card project-card">
-      <div class="project-card__header">
-        <div class="project-card__meta">
-          <span class="project-card__index">P.02</span>
-          <span class="project-card__status project-card__status--prototype">
-            Hackathon Prototype
-          </span>
+    <div class="projects-grid">
+
+        <!-- Nhimbe AI -->
+        <div class="project-card content-card">
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-index">P.01</span>
+                    <span class="project-status status-active">In Development</span>
+                </div>
+                <div class="project-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h3 class="project-name">Nhimbe AI</h3>
+            <p class="project-type">Agricultural Knowledge Platform</p>
+            <p class="project-desc">
+                A web-based advisory platform bridging the information gap for 
+                smallholder farmers in Zimbabwe through AI-powered advice and 
+                community knowledge sharing. Named after the Shona cultural 
+                concept "Nhimbe" - a traditional cooperative farming practice.
+            </p>
+
+            <!-- EXPANDED DETAILS -->
+            <div class="project-expanded">
+                <div class="expanded-inner">
+
+                    <h4 class="expanded-heading">Core Purpose</h4>
+                    <p class="expanded-text">
+                        Bridge the information gap for farmers by providing instant AI-powered 
+                        farming advice, community forums for knowledge sharing, and localized 
+                        agricultural resources with support in Shona and Ndebele.
+                    </p>
+
+                    <h4 class="expanded-heading">Core Features</h4>
+                    <ul class="feature-list feature-list--check">
+                        <li>User Management - Registration, login, profiles</li>
+                        <li>Community Forum - Posts, comments, discussions</li>
+                        <li>AI Chatbot - Text-based farming Q&A</li>
+                        <li>Knowledge Base - Farming resources and articles</li>
+                        <li>Mobile-friendly responsive design</li>
+                    </ul>
+
+                    <h4 class="expanded-heading">Current Status</h4>
+                    <p class="expanded-text">
+                        Being rebuilt from scratch with cleaner architecture while maintaining 
+                        all core features. Future enhancements include image recognition for 
+                        crop disease detection.
+                    </p>
+
+                    <div class="tech-table">
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Frontend</span>
+                            <span class="tech-table__value">HTML5, CSS3, JavaScript (ES6+)</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Backend</span>
+                            <span class="tech-table__value">Python Django Framework</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Database</span>
+                            <span class="tech-table__value">SQLite (MVP) → PostgreSQL (Production)</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Architecture</span>
+                            <span class="tech-table__value">Django MVC with modular apps</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="project-stack">
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">Django</span>
+                <span class="stack-tag">PostgreSQL</span>
+                <span class="stack-tag">JavaScript</span>
+            </div>
+
+            <div class="project-footer">
+                <button class="expand-btn">
+                    <span class="expand-label">Read More</span>
+                    <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <a href="https://github.com/lleytintintasheharris/Nhimbe-Ai" target="_blank" rel="noopener" class="project-link">
+                    GitHub
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
         </div>
-        <div class="project-card__icon">◈</div>
-      </div>
-      <h3 class="project-card__name">Batana</h3>
-      <p class="project-card__type">Financial Inclusion Platform</p>
-      <p class="project-card__desc">
-        Mobile-first platform pitched to ZB Bank Zimbabwe giving unbanked 
-        citizens access to savings, credit, and insurance via USSD. 
-        Name means "together" in Shona/Ndebele.
-      </p>
-      <div class="project-card__stack">
-        <span class="stack-tag">Node.js</span>
-        <span class="stack-tag">Next.js</span>
-        <span class="stack-tag">TypeScript</span>
-        <span class="stack-tag">PostgreSQL</span>
-      </div>
-      <div class="project-card__footer">
-        <a
-          href="https://github.com/lleytontinasheharris/Batana"
-          class="project-card__link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub →
-        </a>
-      </div>
+
+        <!-- Batana -->
+        <div class="project-card content-card">
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-index">P.02</span>
+                    <span class="project-status status-prototype">Hackathon Prototype</span>
+                </div>
+                <div class="project-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                        <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h3 class="project-name">Batana</h3>
+            <p class="project-type">Financial Inclusion Platform</p>
+            <p class="project-desc">
+                Mobile-first financial inclusion platform pitched to ZB Bank Zimbabwe. 
+                Gives unbanked citizens access to savings, credit, and insurance via USSD 
+                on any phone. Name means "together" in Shona/Ndebele.
+            </p>
+
+            <!-- EXPANDED DETAILS -->
+            <div class="project-expanded">
+                <div class="expanded-inner">
+
+                    <h4 class="expanded-heading">Overview</h4>
+                    <p class="expanded-text">
+                        A full-stack system giving unbanked and underbanked Zimbabweans access to savings, 
+                        credit, insurance, and community investment on any phone, including feature phones 
+                        via USSD. Built around the concept that financial identity can be built from 
+                        community behaviour, your mukando history IS your credit score.
+                    </p>
+
+                    <p class="expanded-highlight">
+                        Pitch Target: Help ZB Bank grow from 800,000 to 3–5 million customers using licenses they already hold.
+                    </p>
+
+                    <h4 class="expanded-heading">Four Pillars</h4>
+                    <div class="pillars-grid">
+                        <div class="pillar-item">
+                            <span class="pillar-label">SAVE</span>
+                            <span class="pillar-name">Vimbiso Wallet</span>
+                            <span class="pillar-desc">Gold-gram savings, inflation-proof</span>
+                        </div>
+                        <div class="pillar-item">
+                            <span class="pillar-label">TRUST</span>
+                            <span class="pillar-name">Trust Engine</span>
+                            <span class="pillar-desc">Live gold price, RBZ rates, Vimbiso Credit Score</span>
+                        </div>
+                        <div class="pillar-item">
+                            <span class="pillar-label">PROTECT</span>
+                            <span class="pillar-name">Insurance</span>
+                            <span class="pillar-desc">Funeral, hospital, business parametric cover</span>
+                        </div>
+                        <div class="pillar-item">
+                            <span class="pillar-label">GROW</span>
+                            <span class="pillar-name">Investment Pools</span>
+                            <span class="pillar-desc">Community financing for farmers and small businesses</span>
+                        </div>
+                    </div>
+
+                    <h4 class="expanded-heading">Tech Stack</h4>
+                    <div class="tech-table">
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Backend</span>
+                            <span class="tech-table__value">Node.js + Express</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Database</span>
+                            <span class="tech-table__value">Supabase (PostgreSQL) - Europe region</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Frontend</span>
+                            <span class="tech-table__value">Next.js 14 + TypeScript (App Router)</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Auth</span>
+                            <span class="tech-table__value">JWT (custom, not Supabase Auth)</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Gold Prices</span>
+                            <span class="tech-table__value">GoldAPI.io - live rates</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">USSD</span>
+                            <span class="tech-table__value">Africa's Talking (pending)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="project-stack">
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">Next.js</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">PostgreSQL</span>
+            </div>
+
+            <div class="project-footer">
+                <button class="expand-btn">
+                    <span class="expand-label">Read More</span>
+                    <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <a href="https://github.com/lleytontinasheharris/Batana" target="_blank" rel="noopener" class="project-link">
+                    GitHub
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- PropVerifyZW -->
+        <div class="project-card content-card">
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-index">P.03</span>
+                    <span class="project-status status-prototype">University Prototype</span>
+                </div>
+                <div class="project-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h3 class="project-name">PropVerifyZW</h3>
+            <p class="project-type">Verified Real Estate Platform</p>
+            <p class="project-desc">
+                A verified digital property marketplace tackling fraud in Zimbabwe's 
+                real estate sector through Deeds Registry integration and 
+                licensed agent verification.
+            </p>
+
+            <!-- EXPANDED DETAILS -->
+            <div class="project-expanded">
+                <div class="expanded-inner">
+
+                    <h4 class="expanded-heading">The Problem</h4>
+                    <p class="expanded-text">
+                        Zimbabwe's real estate sector is plagued by fraudulent practices, lack of 
+                        transparency, and unlicensed agents. Buyers, sellers, and tenants lose money 
+                        through scams and fake listings - especially diaspora investors unfamiliar 
+                        with the local landscape.
+                    </p>
+
+                    <ul class="feature-list feature-list--cross">
+                        <li>Fake listings and false ownership claims widespread</li>
+                        <li>Many agents operate without proper accreditation</li>
+                        <li>Buyers cannot verify property titles before committing funds</li>
+                        <li>No centralized verified digital marketplace exists</li>
+                    </ul>
+
+                    <h4 class="expanded-heading">Key Features</h4>
+                    <ul class="feature-list feature-list--check">
+                        <li>Tiered Verification - Government-verified via Deeds Registry</li>
+                        <li>Verified Badge System for legitimate listings</li>
+                        <li>Listings with maps, photos, and virtual tours</li>
+                        <li>Secure escrow-based transactions</li>
+                        <li>Agent reviews and transaction history</li>
+                        <li>Advanced search by type, price, and categories</li>
+                        <li>Resource hub - guides on rights and legal processes</li>
+                    </ul>
+
+                    <h4 class="expanded-heading">Stakeholders</h4>
+                    <div class="tech-table">
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Government</span>
+                            <span class="tech-table__value">Ministry of Lands - Deeds Registry</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Regulatory</span>
+                            <span class="tech-table__value">Real Estate Council of Zimbabwe</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Financial</span>
+                            <span class="tech-table__value">Banks and mobile money operators</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">End Users</span>
+                            <span class="tech-table__value">Buyers, tenants, investors, agents</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="project-stack">
+                <span class="stack-tag">React</span>
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">PostgreSQL</span>
+                <span class="stack-tag">TypeScript</span>
+            </div>
+
+            <div class="project-footer">
+                <button class="expand-btn">
+                    <span class="expand-label">Read More</span>
+                    <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <a href="https://github.com/lleytontinasheharris/PropVeifyZW-repo" target="_blank" rel="noopener" class="project-link">
+                    GitHub
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- MineSafe -->
+        <div class="project-card content-card">
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-index">P.04</span>
+                    <span class="project-status status-prototype">University Prototype</span>
+                </div>
+                <div class="project-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h3 class="project-name">MineSafe</h3>
+            <p class="project-type">AI-Powered Mine Safety Detection System</p>
+            <p class="project-desc">
+                Computer vision system using YOLOv8 to validate complete protective 
+                equipment at mine entrances. Automatically grants or denies access 
+                based on real-time PPE detection - eliminating human error entirely.
+            </p>
+
+            <!-- EXPANDED DETAILS -->
+            <div class="project-expanded">
+                <div class="expanded-inner">
+
+                    <h4 class="expanded-heading">The Problem</h4>
+                    <ul class="feature-list feature-list--cross">
+                        <li>Guards miss equipment or grow complacent during repetitive checks</li>
+                        <li>Different inspectors apply inconsistent standards</li>
+                        <li>Paper-based logs are unreliable with no audit trail</li>
+                        <li>Manual checks create dangerous bottlenecks at shift changes</li>
+                        <li>No accountability without reliable compliance records</li>
+                    </ul>
+
+                    <h4 class="expanded-heading">How It Works</h4>
+                    <ul class="feature-list feature-list--check">
+                        <li>Camera at mine entrance captures each worker approaching</li>
+                        <li>YOLOv8 analyzes the video feed in real-time</li>
+                        <li>Detects presence or absence of 5 mandatory PPE items</li>
+                        <li>Access automatically granted or denied based on result</li>
+                        <li>Voice feedback announces the decision audibly</li>
+                        <li>3D visualization displays detection on a human figure</li>
+                        <li>Every scan logged with timestamps and confidence scores</li>
+                        <li>Admin override, monitoring, and report generation</li>
+                    </ul>
+
+                    <h4 class="expanded-heading">Tech Stack</h4>
+                    <div class="tech-table">
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Backend</span>
+                            <span class="tech-table__value">Django (Python)</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Computer Vision</span>
+                            <span class="tech-table__value">YOLOv8 (Ultralytics)</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Video Processing</span>
+                            <span class="tech-table__value">OpenCV</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">3D Visualization</span>
+                            <span class="tech-table__value">Three.js</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Voice Feedback</span>
+                            <span class="tech-table__value">Web Speech API</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Database</span>
+                            <span class="tech-table__value">SQLite (prototype) → PostgreSQL (production)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="project-stack">
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">YOLOv8</span>
+                <span class="stack-tag">OpenCV</span>
+                <span class="stack-tag">Django</span>
+            </div>
+
+            <div class="project-footer">
+                <button class="expand-btn">
+                    <span class="expand-label">Read More</span>
+                    <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <a href="https://github.com/lleytontinasheharris/MineSafe" target="_blank" rel="noopener" class="project-link">
+                    GitHub
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- ZimBridge — spans full width -->
+        <div class="project-card content-card project-card--wide">
+            <div class="project-header">
+                <div class="project-meta">
+                    <span class="project-index">P.05</span>
+                    <span class="project-status status-proposal">Proposal Stage</span>
+                </div>
+                <div class="project-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"/>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h3 class="project-name">ZimBridge</h3>
+            <p class="project-type">Non-Profit Investment Intelligence Platform</p>
+            <p class="project-desc">
+                Comprehensive investment intelligence platform providing free, data-driven insights 
+                for investors interested in Zimbabwean markets. Democratizing access to economic 
+                information to foster sustainable development.
+            </p>
+
+            <!-- EXPANDED DETAILS -->
+            <div class="project-expanded">
+                <div class="expanded-inner">
+
+                    <p class="expanded-highlight">
+                        Mission: "Democratizing access to Zimbabwean investment information to foster sustainable economic development"
+                    </p>
+
+                    <h4 class="expanded-heading">Core Features</h4>
+                    <div class="zimbridge-features">
+                        <div class="zimbridge-feature">
+                            <h5>Public Dashboard</h5>
+                            <ul class="feature-list feature-list--check">
+                                <li>Real-time economic indicators</li>
+                                <li>Zimbabwe Stock Exchange data</li>
+                                <li>Currency rates (ZWL/USD/Rand)</li>
+                                <li>Commodity prices - gold, tobacco, lithium</li>
+                            </ul>
+                        </div>
+                        <div class="zimbridge-feature">
+                            <h5>Educational Hub</h5>
+                            <ul class="feature-list feature-list--check">
+                                <li>Step-by-step guides for diaspora investors</li>
+                                <li>Sector spotlights - mining, agriculture, tourism</li>
+                                <li>Successful investment case studies</li>
+                                <li>Plain-language regulatory FAQ</li>
+                            </ul>
+                        </div>
+                        <div class="zimbridge-feature">
+                            <h5>Data Transparency</h5>
+                            <ul class="feature-list feature-list--check">
+                                <li>Verified ZIMSTAT and RBZ statistics</li>
+                                <li>10+ years of historical data archives</li>
+                                <li>Source transparency for every metric</li>
+                                <li>Downloadable datasets (CSV/Excel)</li>
+                            </ul>
+                        </div>
+                        <div class="zimbridge-feature">
+                            <h5>Free Interactive Tools</h5>
+                            <ul class="feature-list feature-list--check">
+                                <li>ROI Investment Calculator</li>
+                                <li>Sector Comparator tool</li>
+                                <li>Risk Assessment indicators</li>
+                                <li>Economic trend visualizer</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h4 class="expanded-heading">Implementation Phases</h4>
+                    <div class="tech-table">
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Phase 1 (3–4 months)</span>
+                            <span class="tech-table__value">Basic dashboard with 5–10 key indicators, static educational content</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Phase 2 (6–12 months)</span>
+                            <span class="tech-table__value">Interactive charts, expanded sector data, user accounts</span>
+                        </div>
+                        <div class="tech-table__row">
+                            <span class="tech-table__label">Phase 3 (18–24 months)</span>
+                            <span class="tech-table__value">Verified expert Q&A, moderated insights, events calendar</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="project-stack">
+                <span class="stack-tag">React</span>
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">PostgreSQL</span>
+                <span class="stack-tag">D3.js</span>
+            </div>
+
+            <div class="project-footer">
+                <button class="expand-btn">
+                    <span class="expand-label">Read More</span>
+                    <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <span class="coming-soon-note">GitHub repo coming soon</span>
+            </div>
+        </div>
+
     </div>
 
-    <!-- PropVerifyZW -->
-    <div class="card project-card">
-      <div class="project-card__header">
-        <div class="project-card__meta">
-          <span class="project-card__index">P.03</span>
-          <span class="project-card__status project-card__status--proposal">
-            Proposal Stage
-          </span>
-        </div>
-        <div class="project-card__icon">◆</div>
-      </div>
-      <h3 class="project-card__name">PropVerifyZW</h3>
-      <p class="project-card__type">Real Estate Marketplace</p>
-      <p class="project-card__desc">
-        A verified digital property marketplace tackling fraud in Zimbabwe's 
-        real estate sector through Deeds Registry integration and 
-        licensed agent verification.
-      </p>
-      <div class="project-card__stack">
-        <span class="stack-tag">React</span>
-        <span class="stack-tag">Node.js</span>
-        <span class="stack-tag">PostgreSQL</span>
-        <span class="stack-tag">TypeScript</span>
-      </div>
-      <div class="project-card__footer">
-        <a
-          href="https://github.com/lleytontinasheharris/PropVeifyZW-repo"
-          class="project-card__link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub →
-        </a>
-      </div>
-    </div>
+</div>
 
-    <!-- MineSafe -->
-    <div class="card project-card">
-      <div class="project-card__header">
-        <div class="project-card__meta">
-          <span class="project-card__index">P.04</span>
-          <span class="project-card__status project-card__status--prototype">
-            University Prototype
-          </span>
-        </div>
-        <div class="project-card__icon">◎</div>
-      </div>
-      <h3 class="project-card__name">MineSafe</h3>
-      <p class="project-card__type">Mine Safety Detection System</p>
-      <p class="project-card__desc">
-        Computer vision prototype that validates complete protective equipment 
-        at mine entrances. Real-time 3D feedback and access control — 
-        grants entry only 
+<style>
+/* ================================================================
+   PROJECTS PAGE STYLES
+================================================================ */
+
+.page-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header__icon {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 165, 250, 0.1);
+    border: 2px solid var(--accent-primary);
+    border-radius: 16px;
+    color: var(--accent-primary);
+    box-shadow: var(--glow-sm);
+}
+
+.page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+/* ================================================================
+   GRID — 2 columns, ZimBridge spans full width
+================================================================ */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.project-card--wide {
+    grid-column: 1 / -1;
+}
+
+/* ================================================================
+   PROJECT CARD
+================================================================ */
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.content-card {
+    padding: 2.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.content-card:hover {
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: var(--glow-sm);
+}
+
+.project-card.expanded {
+    border-color: var(--accent-primary) !important;
+    box-shadow: var(--glow-md) !important;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-index {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--accent-primary);
+}
+
+.project-status {
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.status-active {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10B981;
+    color: #10B981;
+}
+
+.status-prototype {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid #A855F7;
+    color: #A855F7;
+}
+
+.status-proposal {
+    background: rgba(251, 146, 60, 0.1);
+    border: 1px solid #FB923C;
+    color: #FB923C;
+}
+
+.project-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 165, 250, 0.1);
+    border: 2px solid var(--accent-primary);
+    border-radius: 12px;
+    color: var(--accent-primary);
+}
+
+.project-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.project-type {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.project-desc {
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+/* ================================================================
+   EXPANDABLE SECTION
+================================================================ */
+
+.project-expanded {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease;
+    opacity: 0;
+}
+
+.project-card.expanded .project-expanded {
+    max-height: 3000px;
+    opacity: 1;
+}
+
+.expanded-inner {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.expanded-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+}
+
+.expanded-heading:first-child {
+    margin-top: 0;
+}
+
+.expanded-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.expanded-highlight {
+    padding: 1rem 1.25rem;
+    background: rgba(96, 165, 250, 0.08);
+    border-left: 3px solid var(--accent-primary);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Feature lists */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.feature-list--check li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10B981;
+    font-weight: 700;
+}
+
+.feature-list--cross li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: #FB923C;
+    font-weight: 700;
+}
+
+/* Tech table */
+.tech-table {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0 1rem;
+}
+
+.tech-table__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tech-table__row:last-child {
+    border-bottom: none;
+}
+
+.tech-table__row:nth-child(odd) {
+    background: rgba(96, 165, 250, 0.03);
+}
+
+.tech-table__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 120px;
+    flex-shrink: 0;
+}
+
+.tech-table__value {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+/* Pillars grid */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin: 0.75rem 0 1rem;
+}
+
+.pillar-item {
+    padding: 1rem 1.25rem;
+    background: rgba(96, 165, 250, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.pillar-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+}
+
+.pillar-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.pillar-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ZimBridge features grid */
+.zimbridge-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 0.75rem 0 1.5rem;
+}
+
+.zimbridge-feature {
+    padding: 1.25rem;
+    background: rgba(96, 165, 250, 0.04);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.zimbridge-feature h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+/* ================================================================
+   STACK TAGS
+================================================================ */
+
+.project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.stack-tag {
+    padding: 0.4rem 0.9rem;
+    background: rgba(96, 165, 250, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+}
+
+.stack-tag:hover {
+    background: rgba(96, 165, 250, 0.1);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+/* ================================================================
+   PROJECT FOOTER
+================================================================ */
+
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    gap: 1rem;
+    margin-top: auto;
+}
+
+/* Expand Button */
+.expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    background: rgba(96, 165, 250, 0.08);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    color: var(--accent-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.expand-btn:hover {
+    background: rgba(96, 165, 250, 0.15);
+    border-color: var(--accent-primary);
+    box-shadow: var(--glow-sm);
+}
+
+.expand-icon {
+    transition: transform var(--transition-base);
+    flex-shrink: 0;
+}
+
+/* Project Link */
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.project-link:hover {
+    gap: 0.75rem;
+    text-shadow: var(--glow-sm);
+}
+
+.coming-soon-note {
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card--wide {
+        grid-column: 1;
+    }
+
+    .pillars-grid,
+    .zimbridge-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .content-card {
+        padding: 1.75rem;
+    }
+
+    .project-name {
+        font-size: 1.4rem;
+    }
+
+    .project-footer {
+        flex-wrap: wrap;
+    }
+
+    .tech-table__row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .tech-table__value {
+        text-align: left;
+    }
+}
+</style>

@@ -1,406 +1,259 @@
 /* ================================================================
-   LLEYTON TINASHE HARRIS — PORTFOLIO v5
-   script.js — Complete Navigation & Interactions
+   LLEYTON TINASHE HARRIS — FUTURISTIC PORTFOLIO
+   Navigation & Page Loading System
 ================================================================ */
 
-// ================================================================
-// CONFIGURATION
-// ================================================================
+const pageOverlay = document.getElementById('page-overlay');
+const pageContent = document.getElementById('page-content');
+const closePageBtn = document.getElementById('close-page');
+const navCards = document.querySelectorAll('.nav-card[data-navigate]');
+const ctaButtons = document.querySelectorAll('[data-navigate]');
 
-const CONFIG = {
-  pages: {
-    about:          'pages/about.html',
-    skills:         'pages/skills.html',
-    projects:       'pages/projects.html',
-    certifications: 'pages/certifications.html',
-    contact:        'pages/contact.html'
-  },
-  transitionDuration: 300
-};
+let currentPage = null;
+let isLoading = false;
 
 // ================================================================
-// STATE
-// ================================================================
-
-const state = {
-  currentPage: null,
-  isTransitioning: false
-};
-
-// ================================================================
-// DOM REFERENCES
-// ================================================================
-
-const DOM = {
-  landing:       document.getElementById('landing'),
-  pageContainer: document.getElementById('page-container'),
-  loader:        document.getElementById('page-loader'),
-  sidebar:       document.getElementById('sidebar'),
-  homeBtn:       document.getElementById('home-btn'),
-  sidebarToggle: document.getElementById('sidebar-toggle'),
-  navLinks:      document.querySelectorAll('.nav-link'),
-  landingBtns:   document.querySelectorAll('.btn[data-page]')
-};
-
-// ================================================================
-// INITIALIZE
-// ================================================================
-
-document.addEventListener('DOMContentLoaded', function () {
-  initNavigation();
-  initHomeButton();
-  initSidebarToggle();
-  initLandingButtons();
-  initKeyboardShortcuts();
-});
-
-// ================================================================
-// SIDEBAR NAVIGATION
-// ================================================================
-
-function initNavigation() {
-  DOM.navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      const pageName = this.getAttribute('data-page');
-      if (pageName && !state.isTransitioning) {
-        navigateTo(pageName);
-        closeSidebar();
-      }
-    });
-  });
-}
-
-// ================================================================
-// HOME BUTTON
-// ================================================================
-
-function initHomeButton() {
-  if (DOM.homeBtn) {
-    DOM.homeBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (!state.isTransitioning) {
-        goHome();
-        closeSidebar();
-      }
-    });
-  }
-}
-
-// ================================================================
-// SIDEBAR TOGGLE (Mobile)
-// ================================================================
-
-function initSidebarToggle() {
-  if (DOM.sidebarToggle) {
-    DOM.sidebarToggle.addEventListener('click', function () {
-      toggleSidebar();
-    });
-  }
-
-  // Close sidebar when clicking outside
-  document.addEventListener('click', function (e) {
-    if (window.innerWidth <= 768) {
-      if (
-        DOM.sidebar.classList.contains('is-open') &&
-        !DOM.sidebar.contains(e.target) &&
-        !DOM.sidebarToggle.contains(e.target)
-      ) {
-        closeSidebar();
-      }
-    }
-  });
-}
-
-function toggleSidebar() {
-  DOM.sidebarToggle.classList.toggle('is-open');
-  DOM.sidebar.classList.toggle('is-open');
-}
-
-function closeSidebar() {
-  DOM.sidebarToggle.classList.remove('is-open');
-  DOM.sidebar.classList.remove('is-open');
-}
-
-// ================================================================
-// LANDING PAGE BUTTONS
-// ================================================================
-
-function initLandingButtons() {
-  DOM.landingBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const pageName = this.getAttribute('data-page');
-      if (pageName && !state.isTransitioning) {
-        navigateTo(pageName);
-        closeSidebar();
-      }
-    });
-  });
-}
-
-// ================================================================
-// NAVIGATE TO PAGE
+// NAVIGATION HANDLER
 // ================================================================
 
 async function navigateTo(pageName) {
-  // Prevent double navigation
-  if (state.isTransitioning) return;
-  if (state.currentPage === pageName) return;
+    if (isLoading) return;
+    if (currentPage === pageName) return;
 
-  state.isTransitioning = true;
+    isLoading = true;
+    currentPage = pageName;
 
-  const filePath = CONFIG.pages[pageName];
+    // Lock ONLY the body scroll
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
 
-  if (!filePath) {
-    console.error(`Page not found: ${pageName}`);
-    state.isTransitioning = false;
-    return;
-  }
+    // Show overlay
+    pageOverlay.classList.add('active');
 
-  showLoader();
+    try {
+        const response = await fetch(`pages/${pageName}.html`);
 
-  try {
-    // Fetch page content
-    const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${pageName}.html`);
+        }
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: Could not load ${filePath}`);
+        const html = await response.text();
+
+        pageContent.innerHTML = html;
+
+        // Reset overlay scroll to top
+        pageOverlay.scrollTop = 0;
+
+        // Init expand buttons after content loads
+        initExpandButtons();
+
+        setTimeout(() => {
+            animatePageContent();
+        }, 100);
+
+    } catch (error) {
+        console.error('Navigation error:', error);
+        pageContent.innerHTML = `
+            <div class="error-container">
+                <div class="error-card">
+                    <h2>Failed to Load Page</h2>
+                    <p>Could not load <strong>${pageName}.html</strong></p>
+                    <p class="error-hint">Make sure you're running this on a local server.</p>
+                    <button class="btn-primary" onclick="closePage()">Go Back</button>
+                </div>
+            </div>
+        `;
     }
 
-    const html = await response.text();
-
-    // Fade out landing or current page
-    await fadeOut();
-
-    // Inject new content
-    DOM.pageContainer.innerHTML = html;
-
-    // Show page container, hide landing
-    DOM.landing.classList.remove('page--visible');
-    DOM.landing.classList.add('page--hidden');
-    DOM.pageContainer.classList.remove('page--hidden');
-    DOM.pageContainer.classList.add('page--visible');
-
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Update active nav link
-    setActiveNavLink(pageName);
-
-    // Update state
-    state.currentPage = pageName;
-
-    // Hide loader
-    hideLoader();
-
-    // Trigger animations on newly loaded content
-    triggerContentAnimations();
-
-  } catch (error) {
-    console.error('Navigation error:', error);
-    showErrorPage(error.message);
-    hideLoader();
-  }
-
-  // Delay before allowing next navigation
-  setTimeout(() => {
-    state.isTransitioning = false;
-  }, CONFIG.transitionDuration);
+    isLoading = false;
 }
 
-// ================================================================
-// GO HOME
-// ================================================================
+function closePage() {
+    // Unlock body scroll
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
 
-async function goHome() {
-  if (state.isTransitioning) return;
-  if (state.currentPage === null) return;
-
-  state.isTransitioning = true;
-
-  // Fade out current page
-  await fadeOut();
-
-  // Clear page container
-  DOM.pageContainer.innerHTML = '';
-  DOM.pageContainer.classList.remove('page--visible');
-  DOM.pageContainer.classList.add('page--hidden');
-
-  // Show landing
-  DOM.landing.classList.remove('page--hidden');
-  DOM.landing.classList.add('page--visible');
-
-  // Remove active nav links
-  clearActiveNavLinks();
-
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // Update state
-  state.currentPage = null;
-
-  setTimeout(() => {
-    state.isTransitioning = false;
-  }, CONFIG.transitionDuration);
-}
-
-// ================================================================
-// FADE OUT
-// ================================================================
-
-function fadeOut() {
-  return new Promise(resolve => {
-    if (DOM.landing.classList.contains('page--visible')) {
-      DOM.landing.style.opacity = '0';
-      DOM.landing.style.transition = `opacity ${CONFIG.transitionDuration}ms ease`;
-    }
-
-    if (DOM.pageContainer.classList.contains('page--visible')) {
-      DOM.pageContainer.style.opacity = '0';
-      DOM.pageContainer.style.transition = `opacity ${CONFIG.transitionDuration}ms ease`;
-    }
+    pageOverlay.classList.remove('active');
+    currentPage = null;
 
     setTimeout(() => {
-      DOM.landing.style.opacity = '';
-      DOM.landing.style.transition = '';
-      DOM.pageContainer.style.opacity = '';
-      DOM.pageContainer.style.transition = '';
-      resolve();
-    }, CONFIG.transitionDuration);
-  });
+        pageContent.innerHTML = '';
+    }, 600);
 }
 
 // ================================================================
-// ACTIVE NAV LINK
+// EXPAND BUTTONS — init after page loads
 // ================================================================
 
-function setActiveNavLink(pageName) {
-  clearActiveNavLinks();
+function initExpandButtons() {
+    const expandBtns = pageContent.querySelectorAll('.expand-btn');
 
-  const activeLink = document.querySelector(
-    `.nav-link[data-page="${pageName}"]`
-  );
+    expandBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const card = this.closest('.project-card');
+            if (!card) return;
+            card.classList.toggle('expanded');
 
-  if (activeLink) {
-    activeLink.classList.add('nav-link--active');
-  }
-}
+            const label = this.querySelector('.expand-label');
+            if (label) {
+                label.textContent = card.classList.contains('expanded')
+                    ? 'Show Less'
+                    : 'Read More';
+            }
 
-function clearActiveNavLinks() {
-  DOM.navLinks.forEach(link => {
-    link.classList.remove('nav-link--active');
-  });
-}
-
-// ================================================================
-// LOADER
-// ================================================================
-
-function showLoader() {
-  if (DOM.loader) {
-    DOM.loader.classList.add('is-loading');
-  }
-}
-
-function hideLoader() {
-  if (DOM.loader) {
-    DOM.loader.classList.remove('is-loading');
-  }
+            const icon = this.querySelector('.expand-icon');
+            if (icon) {
+                icon.style.transform = card.classList.contains('expanded')
+                    ? 'rotate(180deg)'
+                    : 'rotate(0deg)';
+            }
+        });
+    });
 }
 
 // ================================================================
-// ERROR PAGE
+// ANIMATE PAGE CONTENT
 // ================================================================
 
-function showErrorPage(message) {
-  DOM.landing.classList.add('page--hidden');
-  DOM.landing.classList.remove('page--visible');
+function animatePageContent() {
+    const cards = pageContent.querySelectorAll(
+        '.content-card, .project-card, .skill-category, .cert-item, .contact-method'
+    );
 
-  DOM.pageContainer.innerHTML = `
-    <div class="page-content">
-      <div class="page-header">
-        <div class="page-header__icon">!</div>
-        <div>
-          <p class="page-header__number">ERROR</p>
-          <h1 class="page-header__title">Failed to Load</h1>
-        </div>
-      </div>
-      <div class="card">
-        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-          There was an error loading this page.
-        </p>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">
-          ${message}
-        </p>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
-          Make sure you're running this on a local server.
-        </p>
-      </div>
-    </div>
-  `;
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
 
-  DOM.pageContainer.classList.remove('page--hidden');
-  DOM.pageContainer.classList.add('page--visible');
-  state.currentPage = 'error';
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
 }
 
 // ================================================================
-// CONTENT ANIMATIONS
+// EVENT LISTENERS
 // ================================================================
 
-function triggerContentAnimations() {
-  const cards = DOM.pageContainer.querySelectorAll('.card');
+navCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const page = card.getAttribute('data-navigate');
+        navigateTo(page);
+    });
+});
 
-  cards.forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(16px)';
-    card.style.transition = 'none';
+ctaButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const page = btn.getAttribute('data-navigate');
+        navigateTo(page);
+    });
+});
 
-    setTimeout(() => {
-      card.style.transition = `
-        opacity 0.4s ease,
-        transform 0.4s ease
-      `;
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0)';
-    }, 80 + index * 60);
-  });
-}
+closePageBtn.addEventListener('click', closePage);
 
-// ================================================================
-// KEYBOARD SHORTCUTS
-// ================================================================
-
-document.addEventListener('keydown', function (e) {
-  // Ignore if typing in an input
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-    return;
-  }
-
-  const shortcuts = {
-    'h': () => { goHome(); closeSidebar(); },
-    'H': () => { goHome(); closeSidebar(); },
-    '1': () => { navigateTo('about'); closeSidebar(); },
-    '2': () => { navigateTo('skills'); closeSidebar(); },
-    '3': () => { navigateTo('projects'); closeSidebar(); },
-    '4': () => { navigateTo('certifications'); closeSidebar(); },
-    '5': () => { navigateTo('contact'); closeSidebar(); },
-    'Escape': () => { goHome(); closeSidebar(); }
-  };
-
-  if (shortcuts[e.key]) {
-    shortcuts[e.key]();
-
-    // Sync active nav link
-    const pageMap = {
-      '1': 'about',
-      '2': 'skills',
-      '3': 'projects',
-      '4': 'certifications',
-      '5': 'contact'
-    };
-
-    if (pageMap[e.key]) {
-      setActiveNavLink(pageMap[e.key]);
+pageOverlay.addEventListener('click', (e) => {
+    if (e.target === pageOverlay) {
+        closePage();
     }
-  }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && pageOverlay.classList.contains('active')) {
+        closePage();
+    }
+});
+
+// ================================================================
+// SMOOTH SCROLL
+// ================================================================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// ================================================================
+// PARALLAX
+// ================================================================
+
+let ticking = false;
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+function handleScroll() {
+    const scrolled = window.pageYOffset;
+    const glowOrbs = document.querySelectorAll('.glow-orb');
+
+    glowOrbs.forEach((orb, index) => {
+        const speed = (index + 1) * 0.3;
+        orb.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+}
+
+// ================================================================
+// GLASSMORPHIC NAV LINK HANDLING
+// ================================================================
+
+const navLinks = document.querySelectorAll('.nav-glass__link');
+const mobileToggle = document.getElementById('mobile-menu-toggle');
+const navMenu = document.querySelector('.nav-glass__menu');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        const target = this.getAttribute('data-navigate');
+        
+        if (target && target !== 'home') {
+            e.preventDefault();
+            navigateTo(target);
+            
+            // Update active state
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Close mobile menu
+            if (navMenu) {
+                navMenu.classList.remove('mobile-open');
+            }
+            if (mobileToggle) {
+                mobileToggle.classList.remove('active');
+            }
+        } else if (target === 'home') {
+            e.preventDefault();
+            closePage();
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        }
+    });
+});
+
+// Mobile menu toggle
+if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+        mobileToggle.classList.toggle('active');
+        navMenu.classList.toggle('mobile-open');
+    });
+}
+
+// Action cards navigation
+const actionCards = document.querySelectorAll('.action-card[data-navigate]');
+actionCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const page = card.getAttribute('data-navigate');
+        navigateTo(page);
+    });
 });

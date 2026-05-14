@@ -1,75 +1,266 @@
-<div class="page-content">
-
-  <!-- Page header -->
-  <div class="page-header">
-    <div class="page-header__icon">[05]</div>
-    <div>
-      <p class="page-header__number">05 / 05</p>
-      <h1 class="page-header__title">Get In Touch</h1>
+<div class="page-container">
+    
+    <div class="page-header">
+        <div class="page-header__icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+            </svg>
+        </div>
+        <div>
+            <h1 class="page-title">Get In Touch</h1>
+        </div>
     </div>
-  </div>
 
-  <!-- Intro -->
-  <div class="card contact__intro">
-    <p>
-      Open to internships, attachments, collaborations, and 
-      interesting problems. Reach out through any channel below.
-    </p>
-  </div>
+    <div class="content-card featured-card">
+        <p class="lead-text">
+            Open to internships, attachments, collaborations, and 
+            interesting problems. Reach out through any channel below.
+        </p>
+    </div>
 
-  <!-- Contact grid -->
-  <div class="contact__grid">
+    <div class="contact-grid">
 
-    <a href="mailto:tinashelleytonharris@gmail.com" class="card contact-card">
-      <div class="contact-card__icon">✉</div>
-      <h3 class="contact-card__title">Email</h3>
-      <p class="contact-card__detail">tinashelleytonharris@gmail.com</p>
-      <span class="contact-card__action">Send Email →</span>
-    </a>
+        <!-- Email -->
+        <a href="mailto:tinashelleytonharris@gmail.com" class="contact-method content-card">
+            <div class="contact-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            </div>
+            <div class="contact-details">
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-info">tinashelleytonharris@gmail.com</p>
+            </div>
+            <div class="contact-action">
+                <span>Send Email</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </div>
+        </a>
 
-    <a href="tel:+263778998636" class="card contact-card">
-      <div class="contact-card__icon">◎</div>
-      <h3 class="contact-card__title">Phone</h3>
-      <p class="contact-card__detail">+263 778 998 636</p>
-      <p class="contact-card__detail">+263 719 175 959</p>
-      <span class="contact-card__action">Call Now →</span>
-    </a>
+        <!-- Phone -->
+        <a href="tel:+263778998636" class="contact-method content-card">
+            <div class="contact-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+            </div>
+            <div class="contact-details">
+                <h3 class="contact-title">Phone</h3>
+                <p class="contact-info">+263 778 998 636</p>
+                <p class="contact-info">+263 719 175 959</p>
+            </div>
+            <div class="contact-action">
+                <span>Call Now</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </div>
+        </a>
 
-    <a
-      href="https://github.com/lleytontinasheharris"
-      class="card contact-card"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div class="contact-card__icon">⚙</div>
-      <h3 class="contact-card__title">GitHub</h3>
-      <p class="contact-card__detail">@lleytontinasheharris</p>
-      <span class="contact-card__action">View Profile →</span>
-    </a>
+        <!-- GitHub -->
+        <a href="https://github.com/lleytontinasheharris" target="_blank" rel="noopener" class="contact-method content-card">
+            <div class="contact-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+            </div>
+            <div class="contact-details">
+                <h3 class="contact-title">GitHub</h3>
+                <p class="contact-info">@lleytontinasheharris</p>
+            </div>
+            <div class="contact-action">
+                <span>View Profile</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+            </div>
+        </a>
 
-    <a
-      href="https://linkedin.com/in/lleyton-tinashe-harris"
-      class="card contact-card"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div class="contact-card__icon">◈</div>
-      <h3 class="contact-card__title">LinkedIn</h3>
-      <p class="contact-card__detail">lleyton-tinashe-harris</p>
-      <span class="contact-card__action">Connect →</span>
-    </a>
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/lleyton-tinashe-harris" target="_blank" rel="noopener" class="contact-method content-card">
+            <div class="contact-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                </svg>
+            </div>
+            <div class="contact-details">
+                <h3 class="contact-title">LinkedIn</h3>
+                <p class="contact-info">lleyton-tinashe-harris</p>
+            </div>
+            <div class="contact-action">
+                <span>Connect</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+            </div>
+        </a>
 
-    <a
-      href="lleyton-harris-cv.pdf"
-      class="card contact-card"
-      download="Lleyton_Tinashe_Harris_CV.pdf"
-    >
-      <div class="contact-card__icon">◫</div>
-      <h3 class="contact-card__title">Curriculum Vitae</h3>
-      <p class="contact-card__detail">Download my full resume</p>
-      <span class="contact-card__action">Download CV →</span>
-    </a>
+        <!-- CV Download -->
+        <a href="../lleyton-harris-cv.pdf" download="Lleyton_Tinashe_Harris_CV.pdf" class="contact-method content-card featured-contact">
+            <div class="contact-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="18" x2="12" y2="12"/>
+                    <polyline points="9 15 12 18 15 15"/>
+                </svg>
+            </div>
+            <div class="contact-details">
+                <h3 class="contact-title">Curriculum Vitae</h3>
+                <p class="contact-info">Download my full resume</p>
+            </div>
+            <div class="contact-action">
+                <span>Download CV</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <polyline points="19 12 12 19 5 12"/>
+                </svg>
+            </div>
+        </a>
 
-  </div>
+    </div>
 
 </div>
+
+<style>
+.page-container { max-width: 1000px; margin: 0 auto; }
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header__icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 165, 250, 0.1);
+    border: 2px solid var(--accent-primary);
+    border-radius: 16px;
+    color: var(--accent-primary);
+    box-shadow: var(--glow-sm);
+}
+
+.page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.content-card {
+    padding: 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    margin-bottom: 2rem;
+}
+
+.featured-card {
+    border-color: var(--accent-primary);
+    background: rgba(96, 165, 250, 0.05);
+}
+
+.lead-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
+}
+
+.contact-method {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    margin-bottom: 0;
+}
+
+.contact-method:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glow-md);
+}
+
+.featured-contact {
+    border-color: var(--accent-primary);
+    background: rgba(96, 165, 250, 0.05);
+}
+
+.contact-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(96, 165, 250, 0.1);
+    border: 2px solid var(--accent-primary);
+    border-radius: 16px;
+    color: var(--accent-primary);
+    box-shadow: var(--glow-sm);
+}
+
+.contact-details { flex: 1; }
+
+.contact-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.contact-info {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.contact-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    transition: all var(--transition-fast);
+}
+
+.contact-method:hover .contact-action {
+    gap: 0.5rem;
+    text-shadow: var(--glow-sm);
+}
+
+@media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 2rem; }
+}
+</style>
